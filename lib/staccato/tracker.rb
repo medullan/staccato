@@ -115,6 +115,8 @@ module Staccato
 
     # @private
     def post(uri, params)
+        puts "#{uri}"
+         puts "#{params}"
       Net::HTTP.post_form(uri, params)
     end
   end
