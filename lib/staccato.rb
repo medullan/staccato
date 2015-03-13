@@ -2,6 +2,7 @@ require 'ostruct'
 require 'net/http'
 require 'forwardable'
 require 'securerandom'
+require 'json'
 
 require "staccato/version"
 
@@ -52,3 +53,4 @@ require 'staccato/timing'
 require 'staccato/transaction'
 require 'staccato/transaction_item'
 require 'staccato/tracker'
+require 'staccato/debug_response'

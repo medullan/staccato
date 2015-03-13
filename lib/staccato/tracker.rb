@@ -113,20 +113,20 @@ module Staccato
 
     private
 
-    # @private
-    def post(uri, params)
-      return Net::HTTP.post_form(uri, params), post_debug(Staccato.tracking_debug_uri, params)
-    end
+      def post(uri, params)
+        return Net::HTTP.post_form(uri, params), post_debug(Staccato.tracking_debug_uri, params)
+      end
 
-    def post_debug(uri, params)
-      request = Net::HTTP::Post.new(uri.request_uri)
-      request.set_form_data(params)
+      def post_debug(uri, params)
+        request = Net::HTTP::Post.new(uri.request_uri)
+        request.set_form_data(params)
 
-      http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl = (uri.scheme == "https")
-      response = http.request(request)
-      return response.body
-    end
+        http = Net::HTTP.new(uri.host, uri.port)
+        http.use_ssl = (uri.scheme == "https")
+        response = http.request(request)
+        debug_response = Staccato::DebugResponse.new(response.body)
+        return debug_response.json
+      end
   end
 
   # A tracker which does no tracking
