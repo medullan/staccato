@@ -115,9 +115,17 @@ module Staccato
 
     # @private
     def post(uri, params)
-        puts "#{uri}"
-         puts "#{params}"
-      Net::HTTP.post_form(uri, params)
+      return Net::HTTP.post_form(uri, params), post_debug(Staccato.tracking_debug_uri, params)
+    end
+
+    def post_debug(uri, params)
+      request = Net::HTTP::Post.new(uri.request_uri)
+      request.set_form_data(params)
+
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = (uri.scheme == "https")
+      response = http.request(request)
+      return response.body
     end
   end
 

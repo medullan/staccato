@@ -1,0 +1,2 @@
+class DebugResponse
+end

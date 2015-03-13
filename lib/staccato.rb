@@ -36,6 +36,10 @@ module Staccato
   def self.tracking_uri
     URI('http://www.google-analytics.com/collect')
   end
+
+  def self.tracking_debug_uri
+    URI('https://www.google-analytics.com/debug/collect')
+  end
 end
 
 require 'staccato/option_set'
