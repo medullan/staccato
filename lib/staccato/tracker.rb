@@ -111,10 +111,14 @@ module Staccato
       post(Staccato.tracking_uri, params)
     end
 
+    def track_debug(params={})
+      return post(Staccato.tracking_uri, params), post_debug(Staccato.tracking_debug_uri, params)
+    end
+
     private
 
       def post(uri, params)
-        return Net::HTTP.post_form(uri, params), post_debug(Staccato.tracking_debug_uri, params)
+        return Net::HTTP.post_form(uri, params)
       end
 
       def post_debug(uri, params)

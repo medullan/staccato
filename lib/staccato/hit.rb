@@ -127,6 +127,10 @@ module Staccato
       tracker.track(params)
     end
 
+    def track_debug!
+      tracker.track_debug(params)
+    end
+
     private
     def convert_booleans(hash)
       hash.each_pair.with_object({}, &method(:convert_boolean))
