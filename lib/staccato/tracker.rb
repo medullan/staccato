@@ -128,8 +128,8 @@ module Staccato
         http = Net::HTTP.new(uri.host, uri.port)
         http.use_ssl = (uri.scheme == "https")
         response = http.request(request)
-        debug_response = Staccato::DebugResponse.new(response.body)
-        return debug_response.json
+        debug_response = Staccato::DebugResponse.new(response.body, params)
+        return debug_response.debug_info
       end
   end
 

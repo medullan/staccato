@@ -3,7 +3,6 @@ require 'net/http'
 require 'forwardable'
 require 'securerandom'
 require 'json'
-
 require "staccato/version"
 
 # The `Staccato` module namespace
